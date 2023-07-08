@@ -19,8 +19,8 @@ manager.add_command('db', MigrateCommand)
 
 if __name__ == '__main__':
     # app1.debug = False
-    # manager.run()
-    app1.run()
+    manager.run()
+    # app1.run()
 
 
 

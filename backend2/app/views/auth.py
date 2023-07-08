@@ -104,35 +104,8 @@ class UserAuthView(MethodView):
 		return jsonify({'message': f'Hello, {current_user["email"]}! user data deleted'}), 200
 
 
-# protected route
-class ProtectedView(MethodView):
-	@token_required
-	def get(self):
-		current_user = jwt.decode(request.headers.get('Authorization'), app.config['SECRET_KEY'])
-		return jsonify({'message': f'Hello, {current_user["email"]}! This is a protected route'}), 200
 
-
-# other view that require login
-class SomeView(MethodView):
-	methods = ['POST']
-	@token_required
-	def post(self):
-		current_user = jwt.decode(request.headers.get('Authorization'), app.config['SECRET_KEY'])
-		#implement logic for the view
-		return jsonify({'message': f'Hello, {current_user["email"]}! This view requires login'}), 200
-
-	@token_required
-	def get(self):
-		current_user = jwt.decode(request.headers.get('Authorization'), app.config['SECRET_KEY'])
-		#implement logic for the view
-		return jsonify({'message': f'Hello, {current_user["email"]}! This view requires login'}), 200
-
-#register the views with the respective urls
 
 auth_views = UserAuthView.as_view('auth_views')
-protected_views = ProtectedView.as_view('protected_views')
-some_views = SomeView.as_view('some_views')
 
 auth_blueprint.route('/login', methods=['GET', 'POST'])(auth_views)
-protected_blueprint.route('/protected', methods=['GET'])(protected_views)
-some_blueprint.route('/some', methods=['GET','POST'])(some_views)

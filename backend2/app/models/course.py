@@ -7,7 +7,7 @@ class Course(db.Model):
     __tablename__ = 'course'
 
     d_id = db.Column(db.String(50), db.ForeignKey(Dept.d_id), nullable=False)
-    c_id = db.Column(db.String(50), nullable=False)
+    c_id = db.Column(db.String(50), nullable=False, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(100), nullable=False)
     icon = db.Column(db.String(50), nullable=False)

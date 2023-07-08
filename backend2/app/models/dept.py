@@ -1,4 +1,5 @@
 from .dbobject import db
+from datetime import datetime, timedelta
 
 class Dept(db.Model):
     __tablename__ = 'dept'

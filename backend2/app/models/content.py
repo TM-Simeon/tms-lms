@@ -5,8 +5,8 @@ from datetime import datetime
 class Content(db.Model):
     __tablename__ = 'content'
 
-    c_id = db.Column(db.String(50), db.ForeignKey(Course.c_id))
-    module_no = db.Column(db.Integer, nullable=False)
+    c_id = db.Column(db.String(50), db.ForeignKey(Course.c_id), primary_key=True)
+    module_no = db.Column(db.Integer, nullable=False, primary_key=True)
     part1 = db.Column(db.String(150), nullable=False)
     part2 = db.Column(db.String(150), nullable=False)
     part3 = db.Column(db.String(150), nullable=False)
