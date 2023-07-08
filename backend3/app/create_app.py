@@ -24,21 +24,15 @@ def create_app(app):
         return response
 
     # Import and register blueprints
-    from .views.user import user_blueprint
-    from .views.staff import staff_blueprint
-    from .views.student import student_blueprint
-    from .views.index import index_blueprint
+    from .views.calendar import calendar_blueprint
+    from .views.enrollment import enrollment_blueprint
+    from .views.result import result_blueprint
     from .views.auth import auth_blueprint
-    from .views.auth import protected_blueprint
-    from .views.auth import some_blueprint
 
-    app.register_blueprint(user_blueprint)
-    app.register_blueprint(staff_blueprint)
-    app.register_blueprint(student_blueprint)
-    app.register_blueprint(index_blueprint)
+    app.register_blueprint(calendar_blueprint)
+    app.register_blueprint(enrollment_blueprint)
+    app.register_blueprint(result_blueprint)
     app.register_blueprint(auth_blueprint)
-    app.register_blueprint(protected_blueprint)
-    app.register_blueprint(some_blueprint)
 
     # Return the configured application object
     return app
